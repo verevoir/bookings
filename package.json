@@ -1,6 +1,6 @@
 {
   "name": "@verevoir/bookings",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-alpha.1",
   "description": "Time-based availability — calendars, computed availability, offerings, holds, and bookings",
   "homepage": "https://verevoir.io",
   "license": "MIT",
