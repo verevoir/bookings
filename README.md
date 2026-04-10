@@ -54,7 +54,10 @@ const dinner = defineOffering({
 });
 
 // Query availability
-const dateRange = { start: new Date('2026-04-07'), end: new Date('2026-04-08') };
+const dateRange = {
+  start: new Date('2026-04-07'),
+  end: new Date('2026-04-08'),
+};
 const slots = computeAvailability(tables, [evenings], dateRange, [], []);
 
 // Find valid 90-minute windows
@@ -82,58 +85,58 @@ const booking = holdToBooking(hold, { id: 'booking-1' });
 
 ### Calendar
 
-| Export | Description |
-| --- | --- |
-| `defineCalendar({ id, slotDuration, defaultCapacity })` | Create a bookable resource |
-| `durationMs(duration)` | Convert a Duration to milliseconds |
+| Export                                                  | Description                        |
+| ------------------------------------------------------- | ---------------------------------- |
+| `defineCalendar({ id, slotDuration, defaultCapacity })` | Create a bookable resource         |
+| `durationMs(duration)`                                  | Convert a Duration to milliseconds |
 
 ### Rules
 
-| Export | Description |
-| --- | --- |
-| `defineRule({ calendarId, rrule, timeRange, capacity? })` | Create an availability rule |
-| `expandRule(rule, calendar, dateRange)` | Expand a rule into concrete slots |
+| Export                                                    | Description                       |
+| --------------------------------------------------------- | --------------------------------- |
+| `defineRule({ calendarId, rrule, timeRange, capacity? })` | Create an availability rule       |
+| `expandRule(rule, calendar, dateRange)`                   | Expand a rule into concrete slots |
 
 ### Availability
 
-| Export | Description |
-| --- | --- |
-| `computeAvailability(calendar, rules, dateRange, bookings, holds)` | Compute available slots |
-| `findContiguousSlots(slots, count, minCapacity?)` | Find groups of N contiguous available slots |
-| `computeCompositeAvailability(calendars, rules, offering, dateRange, bookings, holds)` | Cross-calendar availability |
+| Export                                                                                 | Description                                 |
+| -------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `computeAvailability(calendar, rules, dateRange, bookings, holds)`                     | Compute available slots                     |
+| `findContiguousSlots(slots, count, minCapacity?)`                                      | Find groups of N contiguous available slots |
+| `computeCompositeAvailability(calendars, rules, offering, dateRange, bookings, holds)` | Cross-calendar availability                 |
 
 ### Offerings
 
-| Export | Description |
-| --- | --- |
+| Export                                    | Description                            |
+| ----------------------------------------- | -------------------------------------- |
 | `defineOffering({ id, label, mappings })` | Define a customer-facing bookable item |
 
 ### Holds
 
-| Export | Description |
-| --- | --- |
+| Export                                               | Description                    |
+| ---------------------------------------------------- | ------------------------------ |
 | `createHold({ id, offeringId, slots, heldBy, ttl })` | Create a temporary reservation |
-| `extendHold(hold, ttl)` | Reset TTL from current time |
-| `isHoldExpired(hold)` | Check if a hold has expired |
+| `extendHold(hold, ttl)`                              | Reset TTL from current time    |
+| `isHoldExpired(hold)`                                | Check if a hold has expired    |
 
 ### Bookings
 
-| Export | Description |
-| --- | --- |
+| Export                                  | Description                           |
+| --------------------------------------- | ------------------------------------- |
 | `holdToBooking(hold, { id, orderId? })` | Convert a hold to a confirmed booking |
 
 ## Architecture
 
-| File | Responsibility |
-| --- | --- |
-| `src/types.ts` | Core interfaces: Calendar, Duration, AvailabilityRule, Slot, Offering, Hold, Booking |
-| `src/calendar.ts` | Calendar definition and duration conversion |
-| `src/rules.ts` | Rule definition and RRULE expansion into concrete slots |
-| `src/availability.ts` | Availability computation, contiguous slots, composite queries |
-| `src/offering.ts` | Offering definition with calendar mappings |
-| `src/hold.ts` | Hold creation, TTL extension, expiry checking |
-| `src/booking.ts` | Convert holds to confirmed bookings |
-| `src/index.ts` | Public API exports |
+| File                  | Responsibility                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| `src/types.ts`        | Core interfaces: Calendar, Duration, AvailabilityRule, Slot, Offering, Hold, Booking |
+| `src/calendar.ts`     | Calendar definition and duration conversion                                          |
+| `src/rules.ts`        | Rule definition and RRULE expansion into concrete slots                              |
+| `src/availability.ts` | Availability computation, contiguous slots, composite queries                        |
+| `src/offering.ts`     | Offering definition with calendar mappings                                           |
+| `src/hold.ts`         | Hold creation, TTL extension, expiry checking                                        |
+| `src/booking.ts`      | Convert holds to confirmed bookings                                                  |
+| `src/index.ts`        | Public API exports                                                                   |
 
 ## Design Decisions
 

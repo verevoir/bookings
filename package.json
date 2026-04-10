@@ -1,6 +1,6 @@
 {
   "name": "@verevoir/bookings",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Time-based availability — calendars, computed availability, offerings, holds, and bookings",
   "homepage": "https://verevoir.io",
   "license": "MIT",
@@ -34,13 +34,13 @@
     "rrule": "^2.8.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "eslint": "^9.39.4",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.8.1",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1",
-    "vitest": "^3.2.3"
+    "prettier": "^3.8.2",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1",
+    "vitest": "^4.1.4"
   }
 }
