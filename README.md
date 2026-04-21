@@ -149,16 +149,16 @@ const booking = holdToBooking(hold, { id: 'booking-1' });
 - **Contiguous bookings.** Restaurant pattern — a 90-minute dinner is 6 × 15-minute slots; the customer sees "18:00", not the underlying granularity.
 - **Standalone.** No Verevoir dependencies. Wire to `@verevoir/commerce` via the optional `orderId` field on bookings.
 
-## Documentation
+## Where it sits
 
-- [Bookings](https://verevoir.io/docs/bookings) — calendars, availability rules, offerings, holds, and confirmed bookings
-- [Commerce](https://verevoir.io/docs/commerce) — products, baskets, orders, payments (wire to bookings via `orderId`)
+- **[@verevoir/commerce](https://www.npmjs.com/package/@verevoir/commerce)** — wire confirmed bookings to commerce orders via the `orderId` field. Bookings = time-based inventory; commerce = payment and order state.
+- **[@verevoir/accounts](https://www.npmjs.com/package/@verevoir/accounts)** — scope calendars and bookings to an account for multi-tenant scheduling.
 
-## Development
+## Docs
 
-```bash
-npm install    # Install dependencies
-make build     # Compile TypeScript
-make test      # Run test suite
-make lint      # Check formatting
-```
+- [Bookings](https://verevoir.io/docs/bookings)
+- [Commerce](https://verevoir.io/docs/commerce)
+
+## License
+
+MIT
